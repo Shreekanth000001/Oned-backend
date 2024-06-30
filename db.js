@@ -1,10 +1,12 @@
 const mongoose = require('mongoose');
 
-const mongoURI = 'mongodb+srv://shreekanthk000001:tms1BvMs8wnDgLv2@oneddb.ao8aqdv.mongodb.net/';
+// require('.env').config();
+
+const mongoURI = process.env.MONGO_URI;
 
 const connecToMongo = async () => {
-    const conn = await mongoose.connect(mongoURI)
-        .then((result) => {
+     await mongoose.connect(mongoURI)
+        .then(() => {
             console.log('success');
         }).catch((err) => {
             console.log('no success', err);
